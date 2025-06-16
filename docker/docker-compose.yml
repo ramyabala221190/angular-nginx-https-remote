@@ -12,7 +12,7 @@ services:
        NGINX_PORT: 80
        SERVER_NAME: my-angular-app.brazilsouth.cloudapp.azure.com
      build:
-       context: ./
+       context: ../
        dockerfile: docker/Dockerfile
      ports:
        - 8085:443
