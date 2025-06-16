@@ -2,6 +2,7 @@ services:
   nginx-demo:
      container_name: testing-nginx-https-container
      image: testing-nginx-https
+     restart: always
      volumes:
        - /etc/letsencrypt/live/my-angular-app.brazilsouth.cloudapp.azure.com/fullchain.pem:/etc/nginx/ssl/fullchain.pem
        - /etc/letsencrypt/live/my-angular-app.brazilsouth.cloudapp.azure.com/privkey.pem:/etc/nginx/ssl/privkey.pem
