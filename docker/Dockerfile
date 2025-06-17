@@ -4,6 +4,7 @@ FROM node:20.5.0-alpine as node
 WORKDIR /app
 
 COPY package.json package-lock.json ./
+RUN rm package-lock.json
 RUN npm cache clean --force
 RUN npm install --verbose
 COPY . .
