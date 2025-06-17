@@ -3,20 +3,19 @@ services:
      container_name: testing-nginx-https-container
      image: testing-nginx-https
      restart: always
-    #  volumes:
-    #    - /etc/letsencrypt/live/my-angular-app.brazilsouth.cloudapp.azure.com/fullchain.pem:/etc/nginx/ssl/fullchain.pem
-    #    - /etc/letsencrypt/live/my-angular-app.brazilsouth.cloudapp.azure.com/privkey.pem:/etc/nginx/ssl/privkey.pem
-    #    - /etc/letsencrypt/options-ssl-nginx.conf:/etc/nginx/ssl/options-ssl-nginx.conf
-    #    - /etc/letsencrypt/ssl-dhparams.pem:/etc/nginx/ssl/ssl-dhparams.pem 
+     volumes:
+       - /etc/letsencrypt/live/myangular-app.brazilsouth.cloudapp.azure.com/fullchain.pem:/etc/nginx/ssl/fullchain.pem
+       - /etc/letsencrypt/live/myangular-app.brazilsouth.cloudapp.azure.com/privkey.pem:/etc/nginx/ssl/privkey.pem
+       - /etc/letsencrypt/options-ssl-nginx.conf:/etc/nginx/ssl/options-ssl-nginx.conf
+       - /etc/letsencrypt/ssl-dhparams.pem:/etc/nginx/ssl/ssl-dhparams.pem 
      environment:
        NGINX_SSL_PORT: 443
-       NGINX_PORT: 80
-       SERVER_NAME: my-angular-app.brazilsouth.cloudapp.azure.com
+       SERVER_NAME: myangular-app.brazilsouth.cloudapp.azure.com
      build:
        context: ../
        dockerfile: docker/Dockerfile
      ports:
-       - 8085:80
+       - 8085:443
 
 
        #docker compose -f docker/docker-compose.yml build
